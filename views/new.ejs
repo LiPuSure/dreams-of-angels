@@ -1,0 +1,42 @@
+<h1>Create a dreambook</h1>
+
+<% for (let dream of dreams) { %>
+    <img src="" alt="">
+<% } %>
+
+<% if (stage === 1) { %>
+    <form action="/dreams" method="post">
+        <label for="">First of all, provide a character setting for the story:</label>
+        <input type="text" name="content">
+        <input type="hidden" name="stage" value="1">
+        <button>Draw NOW</button>
+    </form>
+<% } else if (stage === 2) { %>
+    <form action="/dreams" method="post">
+        <label for="">Secondly, describe a dilemma the character is about to encounter:</label>
+        <input type="text" name="content">
+        <input type="hidden" name="stage" value="2">
+        <button>Draw NOW</button>
+    </form>
+<% } else if (stage === 3) { %>
+    <form action="/dreams" method="post">
+        <label for="">Next, describe feelings the character may have in this dilemma:</label>
+        <input type="text" name="content">
+        <input type="hidden" name="stage" value="3">
+        <button>Draw NOW</button>
+    </form>
+<% } else if (stage === 4) { %>
+    <form action="/dreams" method="post">
+        <label for="">The following step is to think of a possible actions the character may take:</label>
+        <input type="text" name="content">
+        <input type="hidden" name="stage" value="4">
+        <button>Draw NOW</button>
+    </form>
+<% } else if (stage === 5) { %>
+    <form action="/dreams" method="post">
+        <label for="">Lastly, let's give an ending for the story:</label>
+        <input type="text" name="content">
+        <input type="hidden" name="stage" value="5">
+        <button>Draw NOW</button>
+    </form>
+<% } %>

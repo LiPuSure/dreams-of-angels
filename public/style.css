@@ -1,0 +1,41 @@
+:root {
+    --sans-serif: Arial, Helvetica, sans-serif;
+    /* colours */
+    --green: #c0d46d;
+    --gray: #f0f0f0;
+    --darkgray: #404040;
+  }
+  
+  body {
+    background-color: mistyrose;
+    font-family: var(--sans-serif);
+    text-align: center;
+  }
+  
+  img {
+    width: 300px;
+    display: block;
+    margin: 0 auto;
+  }
+ 
+  
+  @media (min-width: 1024px) {
+    .wrapper {
+      padding: 0 2rem;
+      max-width: 1200px;
+    }
+  
+    .all-dishes {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+  }
+  
+  @media (min-width: 1600px) {
+    .wrapper {
+      max-width: 1600px;
+    }
+  
+    .all-dishes {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
