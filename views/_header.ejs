@@ -1,6 +1,14 @@
 <nav>
-    <a href="">login</a>
+    <a href="/">home</a>
     <a href="/dreams/new_book">Create a new dreambook</a>
     <a href="">Find exsiting dreambook</a>
     <a href="">About</a>
+    <% if (!isLoggedIn) {%>
+        <a href="/login">login</a>        
+        <% } else { %>
+            <p>Logged in as <%= currentUser.email %></p>
+        <form action="/logout?_method=delete" method="post">
+            <button>logout</button>
+        </form>
+        <% } %>
 </nav>

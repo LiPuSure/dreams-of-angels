@@ -1,0 +1,19 @@
+<h1>Login page</h1>
+
+<p>Have not yet got an account? <a href="/register">sign up</a> here!</p>
+
+
+
+<form action="/login" method="post">
+    <label for="">email</label>
+    <input type="text" name="email">
+
+    <label for="">password</label>
+    <input type="password" name="password">
+
+    <button>login</button>
+</form>
+
+<% if (locals.errorMsg) { %>
+    <p class="error"><%= errorMsg %></p>
+<% } %>

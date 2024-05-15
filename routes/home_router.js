@@ -4,14 +4,17 @@ const db = require('../db')
 
 router.get('/', (req, res) => {
     const sql = `
-    SELECT * FROM dreams;
+    SELECT * FROM dream_books
+    JOIN dreams
+    ON ( dream_books.id = dreams.book_id )
+    WHERE story_order = $1
+    ;
     `
-    db.query(sql, (err, result) => {
+    db.query(sql, [1],(err, result) => {
         if (err) console.log(err);
 
-        const dreams = result.rows
-        console.log(dreams);
-        res.render('home', { dreams: dreams})
+        const dreambooks = result.rows
+        res.render('home', { dreambooks: dreambooks})
     })
 
 })

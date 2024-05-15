@@ -1,1 +1,9 @@
-<img src="<%= imageUrl %>" alt="">
+<% for (let dream of dreams) { %>
+    <img src="<%= dream.image_url %>" alt="">
+<% } %>
+
+<form action="/dreams/book_title?_method=put" method="post">
+    <label for="">Now it's the time to give our story a name:</label>
+    <input type="text" name="title">
+    <button>submit</button>
+</form>
