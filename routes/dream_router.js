@@ -11,12 +11,26 @@ router.get('/dreams/new_book', (req, res) => {
     res.render('new_book')
 })
 
-router.get('/dreams/new/stage/:id', (req, res) => {
+router.get('/dreams/new/start_point', (req, res) => {
     const timestamp = new Date()
     const sql = `
     INSERT INTO dream_books (title, date)
     VALUES ($1, $2)
     RETURNING *;
+    `
+    db.query(sql, [timestamp, timestamp], (err, result) => {
+        if (err) console.log(err);
+
+        const dreambook = result.rows
+        res.render('start_point', { book_id: dreambook.id})
+    })
+
+})
+
+router.get('/dreams/new/stage/:id', (req, res) => {
+    const sql = `
+    UPDATE dreams 
+    SET 
     `
     db.query(sql, [timestamp, timestamp], (err, result) => {
         if (err) console.log(err);

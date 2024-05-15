@@ -6,7 +6,9 @@ CREATE TABLE dreams (
     id SERIAL PRIMARY KEY,
     image_url TEXT,
     inputText TEXT,
-    story_order INTEGER
+    story_order INTEGER,
+    book_id INTEGER NOT NULL,
+    FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
 );
 
 
