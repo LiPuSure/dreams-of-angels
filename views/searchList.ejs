@@ -1,0 +1,9 @@
+<h1>Search Result</h1>
+
+<% for (let dreambook of dreambooks) { %>
+    <a href="/dreams/present/<%= dreambook.book_id %>?direct_from=search">
+        <p><%= dreambook.title %></p>
+        <img src="<%= dreambook.image_url %>" alt="">
+    </a>
+
+<% } %>

@@ -8,7 +8,8 @@ CREATE TABLE dreams (
     inputText TEXT,
     story_order INTEGER,
     book_id INTEGER NOT NULL,
-    FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE
+    FOREIGN KEY (user_id) REFERENCES users (id) ON DELETE CASCADE,
+    FOREIGN KEY (book_id) REFERENCES dream_books (id) ON DELETE CASCADE
 );
 
 

@@ -11,6 +11,7 @@ const session = require('express-session')
 const sessionRouter = require('./routes/session_router.js')
 const setCurrentUser = require('./middlewares/set_current_user.js')
 const methodOverride = require('method-override')
+const ensureLoggedIn = require('./middlewares/ensure_logged_in.js')
 
 
 app.set('view engine', 'ejs')
@@ -37,6 +38,8 @@ app.use(setCurrentUser)
 app.use(sessionRouter)
 
 app.use(homeRouter)
+
+app.use(ensureLoggedIn)
 
 app.use(dreamRouter)
 

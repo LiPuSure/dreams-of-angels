@@ -80,7 +80,7 @@ router.post('/login', (req, res) => {
 
 
 
-            res.redirect('/')
+            res.redirect('/dashboard')
         })
 
     })

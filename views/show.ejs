@@ -2,8 +2,16 @@
     <img src="<%= dream.image_url %>" alt="">
 <% } %>
 
-<form action="/dreams/book_title?_method=put" method="post">
-    <label for="">Now it's the time to give our story a name:</label>
-    <input type="text" name="title">
-    <button>submit</button>
+<% if (directFrom === "edit") { %>
+    <form action="/dreams/book_title?_method=put" method="post">
+        <label for="">Now it's the time to give our story a name:</label>
+        <input type="text" name="title">
+        <button>submit</button>
+    </form>
+<% } %>
+
+<a href="">Destroy this dreamworld FOREVER</a>
+
+<form action="/dreams/book/<%= dream.book_id %>?_method=delete" method="post">
+    <button>Destroy this dreamworld FOREVER</button>
 </form>
