@@ -44,7 +44,6 @@ router.get('/dreams/new/start_point', (req, res) => {
 
 router.get('/dreams/new/stage/:id', (req, res) => {
     const stageId = Number(req.params.id)
-    console.log(stageId);
     if (stageId === 1) {
         res.render('new', {stage: stageId, dreams: []})
     } else {
@@ -62,7 +61,6 @@ router.get('/dreams/new/stage/:id', (req, res) => {
 router.post('/dreams/new/stage/:id', async (req, res) => {
     const stageId = Number(req.params.id[0])
     const inputText = req.body.content
-    console.log(inputText);
     if (stageId === 1) {
         textFromChatgpt = 'I need you to generate 5 img for me.  The 5 images will make up a story. I will give you settings and requirements one by one. Please connect all the information and background together for all 5 images. '
     }
@@ -82,7 +80,6 @@ router.post('/dreams/new/stage/:id', async (req, res) => {
     const imageResponse = await getResponse()
 
     cloudinary.uploader.upload(imageResponse, {folder: "angel-database-images"}).then((file) => {
-        console.log(file);
         const sql = `
         INSERT INTO dreams (image_url, inputText, story_order, book_id)
         VALUES ($1, $2, $3, $4);
