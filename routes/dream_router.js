@@ -81,10 +81,10 @@ router.post('/dreams/new/stage/:id', async (req, res) => {
 
     cloudinary.uploader.upload(imageResponse, {folder: "angel-database-images"}).then((file) => {
         const sql = `
-        INSERT INTO dreams (image_url, inputText, story_order, book_id)
-        VALUES ($1, $2, $3, $4);
+        INSERT INTO dreams (image_url, inputText, story_order, book_id, user_id)
+        VALUES ($1, $2, $3, $4, $5);
         `
-        db.query(sql, [file.url, inputText, stageId, req.session.bookId], (err, result) => {
+        db.query(sql, [file.url, inputText, stageId, req.session.bookId, req.session.userId], (err, result) => {
             if (err) console.log(err);
             
             if (stageId < 5) {
