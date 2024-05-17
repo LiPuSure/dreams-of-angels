@@ -10,8 +10,9 @@ This is a CRUD web app as a project of GA. This app is inspired by a speech path
 
 ## Planning & Problem Solving
 - ER diagram
-- Basic frame
-![frame](wireframe.jpg)
+![ER](ER-diagram.png)
+- Basic frame (pending to be added)
+![frame]()
 
 ## More features ahead
 - user subscription features
