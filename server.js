@@ -2,8 +2,7 @@ require('dotenv').config()
 
 const express = require('express')
 const app = express()
-const port = 9393
-const db = require('./db/index.js')
+const port = process.env.PORT
 const expressLayouts = require('express-ejs-layouts')
 const homeRouter = require('./routes/home_router.js')
 const dreamRouter = require('./routes/dream_router.js')
