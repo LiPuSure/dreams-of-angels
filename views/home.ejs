@@ -1,10 +1,21 @@
-<h1>1000 Dreams of Angels</h1>
+<div class="home-wrapper">
+    <div class="banner">
+        <h2>Welcome to the wonderland composed of the dreams of little angels!</h2>
+        <h3>Click on any book to begin a fantasy journey of a dreamworld.</h3>
+        <% if (locals.isDashboard) { %>
+            <h4 class="info">Dashboard</h4>
+        <% } %>
+    </div>
 
-<h2>Welcome to the wonderland composed with dreams of little angels!</h2>
-
-<h3>Let destiny lead you into a random dream world.</h3>
-
-<% for (let dreambook of dreambooks) { %>
-    <img src="<%= dreambook.image_url %>" alt="">
-<% } %>
-
+    <div class="bookshelf">
+    <% for (let dreambook of dreambooks) { %>
+        <a href="/dreams/present/<%= dreambook.book_id %>" class="single-book">
+            <img src="<%= dreambook.image_url %>" alt="">
+            <p>
+                <%= dreambook.title.slice(0,10) %>...
+            </p>
+        </a>
+    
+    <% } %>
+    </div>
+</div>

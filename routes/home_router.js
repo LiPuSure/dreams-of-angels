@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
 
         const dreambooks = result.rows
         let randomCovers = _.sampleSize(dreambooks, 3)
-        res.render('home', { dreambooks: randomCovers})
+        res.render('home', { dreambooks: randomCovers, layout: 'home_layout'})
     })
 
 })
@@ -34,12 +34,14 @@ router.get('/dashboard', ensureLoggedIn, (req, res) => {
         if (err) console.log(err);
 
         const dreambooks = result.rows
-        res.render('home', { dreambooks: dreambooks})
+        res.render('home', { dreambooks: dreambooks, isDashboard: true, layout: 'home_layout'})
     })
 
 })
 
-
+router.get('/about', (req, res) => {
+    res.render('about')
+})
 
 
 

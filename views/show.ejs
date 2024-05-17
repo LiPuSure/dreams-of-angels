@@ -1,17 +1,28 @@
+<form id="destroy-form" action="/dreams/book/<%= dreams[0].book_id %>?_method=delete" method="post">
+    <button>Destroy this dreamworld FOREVER</button>
+</form>
+<br>
+<div class="show-dream-layout">
 <% for (let dream of dreams) { %>
-    <img src="<%= dream.image_url %>" alt="">
+    <% if (dreams.indexOf(dream) === 2) { %>
+        <img src="<%= dream.image_url %>" alt="">
+        <div class="break-line"></div>
+    <% } else if (dreams.indexOf(dream) !== 4) {%>
+        <br>
+        <img src="<%= dream.image_url %>" alt="">
+        <img id="arrow" src="https://res.cloudinary.com/diwxzfps7/image/upload/v1715750641/m7wrxnrnez5k13eqhvje.png" alt="">
+    <% } else { %>
+        <img src="<%= dream.image_url %>" alt="">
+    <% } %>
 <% } %>
+</div>
 
 <% if (directFrom === "edit") { %>
     <form action="/dreams/book_title?_method=put" method="post">
-        <label for="">Now it's the time to give our story a name:</label>
+        <label for="">Now it's the time to give your story a title:</label>
         <input type="text" name="title">
         <button>submit</button>
     </form>
 <% } %>
 
-<a href="">Destroy this dreamworld FOREVER</a>
 
-<form action="/dreams/book/<%= dream.book_id %>?_method=delete" method="post">
-    <button>Destroy this dreamworld FOREVER</button>
-</form>

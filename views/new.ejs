@@ -1,43 +1,58 @@
-<h1>Create a dream</h1>
-<p>Book id: <%= currentBook.id %></p>
+<div>
+    <h1>Draw Your Dream For You</h1>
+    <p>Current Book Id: <%= currentBook.id %></p>
+</div>
 
+<div class="show-dream-layout">
 <% for (let dream of dreams) { %>
     <img src="<%= dream.image_url %>" alt="">
 <% } %>
+</div>
 
+<div class="text-to-ai">
 <% if (stage === 1) { %>
-    <form action="/dreams/new/stage/1" method="post">
-        <label for="">First of all, provide a character setting for the story:</label>
-        <input type="text" name="content">
+    <form action="/dreams/new/stage/1" method="post" class="chatgpt-form">
+        <label for="">First of all, describe your character(s) for the story:</label><br>
+        <textarea type="text" name="content"></textarea><br>
         <input type="hidden" name="stage" value="1">
-        <button>Draw NOW</button>
+        <button class="chatgpt-btn">Draw NOW</button>
     </form>
 <% } else if (stage === 2) { %>
-    <form action="/dreams/new/stage/2" method="post">
-        <label for="">Secondly, describe a dilemma the character is about to encounter:</label>
-        <input type="text" name="content">
+    <form action="/dreams/new/stage/2" method="post" class="chatgpt-form">
+        <label for="">Second, describe a problem your character(s) is about to encounter:</label><br>
+        <textarea type="text" name="content"></textarea><br>
         <input type="hidden" name="stage" value="2">
-        <button>Draw NOW</button>
+        <button class="chatgpt-btn">Draw NOW</button>
     </form>
 <% } else if (stage === 3) { %>
-    <form action="/dreams/new/stage/3" method="post">
-        <label for="">Next, describe feelings the character may have in this dilemma:</label>
-        <input type="text" name="content">
+    <form action="/dreams/new/stage/3" method="post" class="chatgpt-form">
+        <label for="">Next, describe the feelings your character(s) may have when facing this problem:</label><br>
+        <textarea type="text" name="content"></textarea><br>
         <input type="hidden" name="stage" value="3">
-        <button>Draw NOW</button>
+        <button class="chatgpt-btn">Draw NOW</button>
     </form>
 <% } else if (stage === 4) { %>
-    <form action="/dreams/new/stage/4" method="post">
-        <label for="">The following step is to think of a possible actions the character may take:</label>
-        <input type="text" name="content">
+    <form action="/dreams/new/stage/4" method="post" class="chatgpt-form">
+        <label for="">The following step is to think of possible actions your character(s) may take:</label><br>
+        <textarea type="text" name="content"></textarea><br>
         <input type="hidden" name="stage" value="4">
-        <button>Draw NOW</button>
+        <button class="chatgpt-btn">Draw NOW</button>
     </form>
 <% } else if (stage === 5) { %>
-    <form action="/dreams/new/stage/5" method="post">
-        <label for="">Lastly, let's give an ending for the story:</label>
-        <input type="text" name="content">
+    <form action="/dreams/new/stage/5" method="post" class="chatgpt-form">
+        <label for="">Last, let's give an ending for the story:</label><br>
+        <textarea type="text" name="content"></textarea><br>
         <input type="hidden" name="stage" value="5">
-        <button>Let's see the complete dream NOW</button>
+        <button class="chatgpt-btn">Let's see the complete dream NOW</button>
     </form>
 <% } %>
+</div>
+
+<div class="spinner-box">
+    <div class="configure-border-1">  
+      <div class="configure-core"></div>
+    </div>  
+    <div class="configure-border-2">
+      <div class="configure-core"></div>
+    </div> 
+  </div>

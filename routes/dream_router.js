@@ -32,7 +32,7 @@ router.get('/dreams/new/start_point', (req, res) => {
     VALUES ($1, $2)
     RETURNING *;
     `
-    db.query(sql, [timestamp, timestamp], (err, result) => {
+    db.query(sql, ['untitled', timestamp], (err, result) => {
         if (err) console.log(err);
 
         const dreambook = result.rows[0]

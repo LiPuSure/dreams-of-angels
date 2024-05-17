@@ -1,14 +1,19 @@
-<nav>
-    <a href="/">home</a>
+<h1>1000 Dreams of Angels</h1>
+
+<nav class="nav-bar">
+    <a href="/">Home</a>
     <a href="/dreams/new_book">Create a new dreambook</a>
     <a href="/dreams/search">Find exsiting dreambook</a>
-    <a href="">About</a>
+    <a href="/about">About</a>
     <% if (!isLoggedIn) {%>
         <a href="/login">login</a>        
         <% } else { %>
-            <p>Logged in as <%= currentUser.email %></p>
-        <form action="/logout?_method=delete" method="post">
-            <button>logout</button>
-        </form>
-        <% } %>
+            <a href="/dashboard">Dashboard</a>
+            <form action="/logout?_method=delete" method="post">
+                <a><button>logout</button></a>
+            </form>
+            <% } %>
 </nav>
+<% if (isLoggedIn) {%>
+    <p>Logged in as <%= currentUser.email %></p>
+<% } %>
