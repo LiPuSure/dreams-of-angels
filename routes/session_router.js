@@ -14,14 +14,18 @@ router.get('/register', (req, res) => {
 router.post('/register', (req, res) => {
     const email = req.body.email
     const plainTextPassword = req.body.password
+    const registration_code = req.body.code
+    if (registration_code !== process.env.REGISTRATION_SECRET) {
+        return res.render('register', { isCodeWrong: true })
+    }
     const saltRounds = 10
 
 
     const sql = `
     INSERT INTO 
-        users (email, password_digest)
+        users (email, password_digest, registration_code)
     VALUES 
-        ($1, $2)
+        ($1, $2, $3)
     RETURNING
         *;
     `
@@ -32,7 +36,7 @@ router.post('/register', (req, res) => {
         bcrypt.hash(plainTextPassword, salt, (err, hash) => {
             if (err) console.log(err);
 
-            db.query(sql, [email, hash], (err, result) => {
+            db.query(sql, [email, hash, registration_code], (err, result) => {
                 if (err) {
                     console.log(err);
                 }

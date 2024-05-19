@@ -2,12 +2,19 @@
 
 
 <form action="/register" method="post">
-    <label for="">email</label>
+    <label for="">Email: </label>
     <input type="text" name="email">
 
-    <label for="">password</label>
+    <label for="">Password: </label>
     <input type="password" name="password">
+
+    <label for="">Registration Code: </label>
+    <input type="text" name="code">
 
     <button>Rigister NOW</button>
 </form>
 
+<% if (locals.isCodeWrong) { %>
+    <p style="color: red;">Invalid Registration Code!</p>
+    <p>If you want to have a valid registration code, please contact author (purify5121@gmail.com).</p>
+<% } %>
