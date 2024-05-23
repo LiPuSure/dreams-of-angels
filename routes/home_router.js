@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
         if (err) console.log(err);
 
         const dreambooks = result.rows
-        let randomCovers = _.sampleSize(dreambooks, 3)
+        let randomCovers = _.sampleSize(dreambooks, 9)
         res.render('home', { dreambooks: randomCovers, layout: 'home_layout'})
     })
 
@@ -28,9 +28,10 @@ router.get('/dashboard', ensureLoggedIn, (req, res) => {
     JOIN dreams
     ON ( dream_books.id = dreams.book_id )
     WHERE user_id = $1
+    AND story_order = $2
     ;
     `
-    db.query(sql, [req.session.userId], (err, result) => {
+    db.query(sql, [req.session.userId, 1], (err, result) => {
         if (err) console.log(err);
 
         const dreambooks = result.rows
